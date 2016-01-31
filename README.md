@@ -12,15 +12,15 @@ Note: if you're not using postgres (not mandatory!), you don't need to install p
 
 Once you've all of this, you can run the API locally directly with Anillo:
 ```
-(docker-101) src/ $ python run.py serve --create-db --with-fixtures --no-hot-reload
+(myvenv) src/ $ python run.py serve --create-db --with-fixtures --no-hot-reload
 ```
 
 Or, if you installed <em>requirements-server.txt</em>, you can run the application with Gunicorn:
 ```
-(docker-101) src/ $ gunicorn -b 0.0.0.0:5005 --access-logfile - --error-logfile - --log-level debug 'wsgi:load_application("create-db", "with-fixtures")'
+(myvenv) src/ $ gunicorn -b 0.0.0.0:5005 --access-logfile - --error-logfile - --log-level debug 'wsgi:load_application("create-db", "with-fixtures")'
 ```
 
 And you can run the tests:
 ```
-(docker-101) src/ $ python run.py test
+(myvenv) src/ $ python run.py test
 ```
