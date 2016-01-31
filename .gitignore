@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__
 *.py[cod]
 *$py.class
 
@@ -60,3 +60,17 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+*.swp
+
+log.txt
+errors.txt
+
+*.db
+
+#Doc
+doc/snippets/*
+doc/*.html
+
+
+.idea
