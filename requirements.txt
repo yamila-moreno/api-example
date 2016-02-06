@@ -6,3 +6,4 @@ SQLAlchemy==1.0.10
 SQLAlchemy-Utils==0.31.4
 py-bcrypt==0.4
 -e git://github.com/kaleidos/skame.git@f2655fe7e06dcd857cba5aabdae998fb2a25ac3f#egg=skame-master
+psycopg2==2.6.1
