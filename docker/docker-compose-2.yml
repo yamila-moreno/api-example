@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+    myapp_postgres:
+        image: postgres:9.4.5
+        container_name: myapp_postgres
+        environment:
+            - "POSTGRES_DB=myapp"
+        networks:
+            - my_network
+            - my-other-network
+        volumes:
+            - my-other-volume:/opt/my-other-volume
+            - my_volume:/opt/my_volume
+
+
+networks:
+    my-other-network:
+        driver: bridge
+    my_network:
+        external:
+            name: my_network # we created it at the beginning of this post
+
+volumes:
+    my-other-volume:
+        driver: local
+    my_volume:
+        external:
+            name: my_volume # we created it at the beginning of this post

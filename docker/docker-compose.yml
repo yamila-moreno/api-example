@@ -1,0 +1,27 @@
+myapp-postgres:
+    image: postgres:9.4.5
+    container_name: myapp-postgres
+    environment:
+        - "POSTGRES_DB=myapp"
+
+myapp-api:
+    image: myapp-api:1.0
+    container_name: myapp-api
+    links:
+        - myapp-postgres:myapp-postgres
+    environment:
+        - "MY_APP_DB_DRIVERNAME=postgres"
+        - "MY_APP_DB_DATABASE=myapp"
+        - "MY_APP_DB_HOST=myapp-postgres"
+        - "MY_APP_DB_PORT=5432"
+        - "MY_APP_DB_USERNAME=postgres"
+        - "MY_APP_SERVER_PORT=5005"
+    command: /venv/bin/gunicorn -b 0.0.0.0:5005 --access-logfile - --error-logfile - --log-level debug 'wsgi:load_application("create-db", "with-fixtures")'
+
+myapp-nginx:
+    image: myapp-nginx:1.0
+    container_name: myapp-nginx
+    links:
+        - myapp-api:myapp-api
+    ports:
+        - "5001:80"
