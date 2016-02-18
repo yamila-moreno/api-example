@@ -1,4 +1,4 @@
-anillo==0.1.0
+anillo==0.1.3
 anillo-auth==0.1.2
 click==6.2
 pytest==2.8.5
